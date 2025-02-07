@@ -1,0 +1,24 @@
+The following CSS code snippet demonstrates an issue where the expected behavior of a pseudo-element (:before) is not met due to a specificity conflict:
+
+```css
+div {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+}
+
+div:before {
+  content: "Example";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightcoral;
+}
+
+/* The conflicting style */
+div:before {
+  background-color: lightgreen; /* Overrides lightcoral*/
+}
+```
+
+The second `div:before` rule overrides the first due to its position later in the stylesheet. This is a common occurrence and is usually unintentional. 
