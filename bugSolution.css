@@ -1,0 +1,52 @@
+The solution involves understanding CSS Specificity and adjusting the code to fix the issue. There are two main approaches:
+
+**Approach 1: Increase Specificity of the Intended Style**
+
+By adding a more specific selector to the style you want to maintain, you can achieve the intended effect. For example, adding an id to the div would increase the specificity:
+
+```css
+#myDiv {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+}
+
+#myDiv:before {
+  content: "Example";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightcoral; /* This style is now preserved */
+}
+
+/* Less specific selector */
+div:before {
+  background-color: lightgreen; 
+}
+```
+
+**Approach 2: Reorder Stylesheets**
+
+Ensure the style rule with the desired effect appears later in the CSS file, ensuring higher specificity takes precedence.  This is the simplest approach in this case:
+
+```css
+div {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+}
+
+/* Less specific selector moved to the end*/
+div:before {
+  background-color: lightgreen; 
+}
+
+div:before {
+  content: "Example";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightcoral; /* This style is now preserved */
+}
+```
+Choosing the best approach depends on the complexity of the stylesheet and the overall design.
